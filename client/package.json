@@ -1,0 +1,24 @@
+{
+  "name": "imdb-startups",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^1.1.0",
+    "@emotion/react": "^11.1.4",
+    "@emotion/styled": "^11.0.0",
+    "autoprefixer": "^10.1.0",
+    "formik": "^2.2.6",
+    "framer-motion": "^3.1.1",
+    "next": "10.0.4",
+    "postcss": "^8.2.2",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-rating": "^2.0.5",
+    "tailwindcss": "^2.0.2"
+  }
+}
