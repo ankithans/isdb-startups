@@ -1,0 +1,27 @@
+{
+  "name": "hack-nit-patna",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./api/app.js",
+  "scripts": {
+    "start": "node ./api/app.js",
+    "dev": "nodemon ./api/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.9",
+    "nodemailer": "^6.4.17",
+    "razorpay": "^2.0.6",
+    "validator": "^13.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
