@@ -65,6 +65,7 @@ export default function Dashboard() {
               }}
             >
               <StartupCard
+                key={startup._id}
                 image={startup.image}
                 title={startup.title}
                 description={startup.description}
