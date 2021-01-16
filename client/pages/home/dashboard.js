@@ -5,20 +5,43 @@ import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import StartupCard from "../../components/StartupCard";
 import { useRouter } from "next/router";
+import { useToasts } from "react-toast-notifications";
+import axios from "axios";
 
 import startups from "../../data/startups.json";
 
-export async function getStaticProps(context) {
-  return {
-    props: {},
-  };
-}
-
 export default function Dashboard() {
+  const { addToast } = useToasts();
   const router = useRouter();
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const getStartups = async () => {
+    try {
+      const response = await axios.get(
+        "https://isdb-startup.herokuapp.com/startup"
+      );
+
+      addToast(`Startups Loaded successfully!`, {
+        appearance: "success",
+        autoDismiss: true,
+      });
+
+      setData(response.data);
+      setLoading(false);
+      console.log(response.data);
+    } catch (err) {
+      addToast("Server Error!", {
+        appearance: "error",
+        autoDismiss: true,
+      });
+      setLoading(false);
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
-    setData(startups);
+    getStartups();
     console.log(data);
   }, []);
   return (
@@ -37,7 +60,7 @@ export default function Dashboard() {
             <button
               className='hover:bg-gray-50 p-0 m-0'
               onClick={() => {
-                router.push(`/startup/${startup.id}`);
+                router.push(`/startup/${startup._id}`);
               }}
             >
               <StartupCard

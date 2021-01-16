@@ -15,15 +15,25 @@ import {
   FormLabel,
   Input,
 } from "@chakra-ui/react";
-
+import { useToasts } from "react-toast-notifications";
 import startups from "../../data/startups.json";
 import Reviews from "../../components/ReviewCard";
 import ReviewCard from "../../components/ReviewCard";
 import Rating from "react-rating";
+import axios from "axios";
 
 export async function getServerSideProps(context) {
-  let data = [];
-  data = startups;
+  let data = {};
+  try {
+    const response = await axios.get(
+      "https://isdb-startup.herokuapp.com/startup"
+    );
+
+    data = response.data[0];
+    console.log(response.data);
+  } catch (err) {
+    console.log(err);
+  }
   console.log(data);
   return {
     props: {
@@ -51,14 +61,14 @@ export default function startup({ data }) {
             <img
               alt='ecommerce'
               className='lg:w-2/6 w-full lg:h-auto h-64 object-cover object-center rounded'
-              src={data[id - 1].image}
+              src={data.image}
             />
             <div className='lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0'>
               <h2 className='text-sm title-font text-gray-500 tracking-widest'>
-                {data[id - 1].title}
+                {data.title}
               </h2>
               <h1 className='text-gray-900 text-3xl title-font font-medium mb-1'>
-                {data[id - 1].title}
+                {data.title}
               </h1>
               <div className='flex mb-4'>
                 <span className='flex items-center'>
@@ -104,7 +114,7 @@ export default function startup({ data }) {
                   </a>
                 </span>
               </div>
-              <p className='leading-relaxed'>{data[id - 1].description}</p>
+              <p className='leading-relaxed'>{data.description}</p>
 
               <div className='md:flex mt-4'>
                 <span className='title-font font-medium text-2xl text-gray-900'>
@@ -112,7 +122,7 @@ export default function startup({ data }) {
                 </span>
                 <div className='flex mt-4 md:mt-0 md:flex-auto'>
                   <button className='flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded'>
-                    Invest on {data[id - 1].title}
+                    Invest on {data.title}
                   </button>
                   <button
                     onClick={onOpen}
@@ -159,11 +169,14 @@ export default function startup({ data }) {
             Reviews
           </h1>
           <div className='flex flex-wrap -m-4'>
-            <ReviewCard />
-            <ReviewCard />
-            <ReviewCard />
-            <ReviewCard />
-            <ReviewCard />
+            {data.reviews.map((reviews) => (
+              <ReviewCard
+                review={reviews.review}
+                name={reviews.star}
+                id={reviews._id}
+                key={reviews.id}
+              />
+            ))}
           </div>
         </div>
       </section>
