@@ -58,13 +58,13 @@ export default function Dashboard() {
         <div className='flex flex-wrap -m-4'>
           {data.map((startup) => (
             <button
+              key={startup._id}
               className='hover:bg-gray-50 p-0 m-0'
               onClick={() => {
                 router.push(`/startup/${startup._id}`);
               }}
             >
               <StartupCard
-                key={startup.id}
                 image={startup.image}
                 title={startup.title}
                 description={startup.description}

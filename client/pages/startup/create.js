@@ -1,7 +1,62 @@
-import React from "react";
+import { useState } from "react";
 import Navbar from "../../components/Navbar";
+import { useToasts } from "react-toast-notifications";
+import { useRouter } from "next/router";
+import axios from "axios";
+import Loader from "react-loader-spinner";
 
 export default function create() {
+  const { addToast } = useToasts();
+  const router = useRouter();
+
+  const [title, setTitle] = useState("");
+  const [founder, setFounder] = useState("");
+  const [imageurl, setImageUrl] = useState("");
+  const [description, setDescription] = useState("");
+  const [workType, setWorkType] = useState("");
+  const [location, setLocation] = useState("");
+  const [contactmail, setContactMail] = useState("");
+  const [loading, setLoading] = useState("");
+
+  const createStartup = async (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        "https://isdb-startup.herokuapp.com/user/addstartup",
+        {
+          userid: localStorage.getItem("id"),
+          image: imageurl,
+          title: title,
+          founder: founder,
+          description: description,
+          problemItSolves: "",
+          workType: workType,
+          location: location,
+          contactmail: contactmail,
+        }
+      );
+      console.log(response.data);
+
+      addToast(`Startup added successfully`, {
+        appearance: "success",
+        autoDismiss: true,
+      });
+
+      setLoading(false);
+
+      router.push("/");
+    } catch (err) {
+      addToast("Server Error!", {
+        appearance: "error",
+        autoDismiss: true,
+      });
+      setLoading(false);
+      console.log(err);
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -11,12 +66,12 @@ export default function create() {
           Let's start your journey
         </h2>
 
-        <form action='#' onSubmit={() => {}}>
+        <form onSubmit={createStartup}>
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4'>
             <div>
               <label
                 className='text-gray-700 dark:text-gray-200'
-                for='username'
+                htmlFor='username'
               >
                 Startup title
               </label>
@@ -24,18 +79,8 @@ export default function create() {
                 required
                 id='title'
                 type='text'
-                className='mt-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded py-2 px-4 block w-full focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring'
-              />
-            </div>
-
-            <div>
-              <label className='text-gray-700 dark:text-gray-200' for='founder'>
-                Founder
-              </label>
-              <input
-                required
-                id='title'
-                type='text'
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
                 className='mt-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded py-2 px-4 block w-full focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring'
               />
             </div>
@@ -43,7 +88,24 @@ export default function create() {
             <div>
               <label
                 className='text-gray-700 dark:text-gray-200'
-                for='imageurl'
+                htmlFor='founder'
+              >
+                Founder
+              </label>
+              <input
+                required
+                id='title'
+                type='text'
+                value={founder}
+                onChange={(e) => setFounder(e.target.value)}
+                className='mt-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded py-2 px-4 block w-full focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring'
+              />
+            </div>
+
+            <div>
+              <label
+                className='text-gray-700 dark:text-gray-200'
+                htmlFor='imageurl'
               >
                 Image Url
               </label>
@@ -51,6 +113,8 @@ export default function create() {
                 required
                 id='image'
                 type='url'
+                value={imageurl}
+                onChange={(e) => setImageUrl(e.target.value)}
                 className='mt-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded py-2 px-4 block w-full focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring'
               />
             </div>
@@ -58,7 +122,7 @@ export default function create() {
             <div>
               <label
                 className='text-gray-700 dark:text-gray-200'
-                for='description'
+                htmlFor='description'
               >
                 Description
               </label>
@@ -66,6 +130,8 @@ export default function create() {
                 required
                 id='description'
                 type='text'
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
                 className='mt-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded py-2 px-4 block w-full focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring'
               />
             </div>
@@ -73,7 +139,7 @@ export default function create() {
             <div>
               <label
                 className='text-gray-700 dark:text-gray-200'
-                for='workType'
+                htmlFor='workType'
               >
                 Work Type
               </label>
@@ -81,6 +147,8 @@ export default function create() {
                 required
                 id='workType'
                 type='text'
+                value={workType}
+                onChange={(e) => setWorkType(e.target.value)}
                 className='mt-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded py-2 px-4 block w-full focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring'
               />
             </div>
@@ -88,7 +156,7 @@ export default function create() {
             <div>
               <label
                 className='text-gray-700 dark:text-gray-200'
-                for='location'
+                htmlFor='location'
               >
                 Location
               </label>
@@ -96,6 +164,8 @@ export default function create() {
                 required
                 id='location'
                 type='text'
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
                 className='mt-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded py-2 px-4 block w-full focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring'
               />
             </div>
@@ -103,7 +173,7 @@ export default function create() {
             <div>
               <label
                 className='text-gray-700 dark:text-gray-200'
-                for='contactmail'
+                htmlFor='contactmail'
               >
                 Contact Mail
               </label>
@@ -111,15 +181,31 @@ export default function create() {
                 required
                 id='contactmail'
                 type='email'
+                value={contactmail}
+                onChange={(e) => setContactMail(e.target.value)}
                 className='mt-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded py-2 px-4 block w-full focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring'
               />
             </div>
           </div>
 
           <div className='flex justify-end mt-6'>
-            <button className='bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600'>
-              Create Startup
-            </button>
+            {loading ? (
+              <Loader
+                className='w-full flex justify-center'
+                type='Oval'
+                color='#00BFFF'
+                height={40}
+                width={40}
+                timeout={3000}
+              />
+            ) : (
+              <button
+                type='submit'
+                className='bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600'
+              >
+                Create Startup
+              </button>
+            )}
           </div>
         </form>
       </div>
