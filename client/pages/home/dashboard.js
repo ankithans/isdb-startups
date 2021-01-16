@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import DashboardHeader from "../../components/DashboardHeader";
 import Footer from "../../components/Footer";
@@ -7,8 +6,6 @@ import StartupCard from "../../components/StartupCard";
 import { useRouter } from "next/router";
 import { useToasts } from "react-toast-notifications";
 import axios from "axios";
-
-import startups from "../../data/startups.json";
 
 export default function Dashboard() {
   const { addToast } = useToasts();
@@ -44,6 +41,7 @@ export default function Dashboard() {
     getStartups();
     console.log(data);
   }, []);
+
   return (
     <div>
       <Navbar

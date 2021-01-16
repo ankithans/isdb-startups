@@ -38,7 +38,7 @@ export default function startup({ key }) {
     try {
       setLoading(true);
       const response = await axios.get(
-        `http://localhost:5000/user/startup/${id}`
+        `https://isdb-startup.herokuapp.com/user/startup/${id}`
       );
 
       console.log(response.data);
