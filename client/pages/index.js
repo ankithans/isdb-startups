@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Login from "./auth/login";
 import Dashboard from "./home/dashboard";
 
 export default function Home() {
   const [isLoggedIn, setLoggedIn] = useState(true);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) setLoggedIn(true);
+    else setLoggedIn(false);
+  }, []);
+
   if (isLoggedIn) {
     return <Dashboard />;
   } else {

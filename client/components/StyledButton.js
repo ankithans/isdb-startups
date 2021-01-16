@@ -1,5 +1,5 @@
 import { Button } from "@chakra-ui/react";
-export default function StyledButton({ label, type, isLoading }) {
+export default function StyledButton({ label, type, isLoading, onClick }) {
   return (
     <div className='p-2'>
       <Button
@@ -8,8 +8,8 @@ export default function StyledButton({ label, type, isLoading }) {
         bgColor='blue.600'
         rounded='md'
         w='150px'
-        type={type}
         mt='3'
+        onClick={onClick}
       >
         {label}
       </Button>
