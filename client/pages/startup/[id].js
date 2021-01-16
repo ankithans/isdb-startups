@@ -98,7 +98,9 @@ export default function startup({ data }) {
               <div className='flex mb-4'>
                 <span className='flex items-center'>
                   <Rating initialRating='4' readonly />
-                  <span className='text-gray-600 ml-3'>4 Reviews</span>
+                  <span className='text-gray-600 ml-3'>
+                    {data.reviews.length} Reviews
+                  </span>
                 </span>
                 <span className='flex ml-3 pl-3 py-2 borderL-2 border-gray-200 space-x-2s'>
                   <a className='text-gray-500'>
@@ -209,7 +211,7 @@ export default function startup({ data }) {
                 review={reviews.review}
                 name={reviews.star}
                 id={reviews._id}
-                key={reviews.id}
+                key={reviews._id}
               />
             ))}
           </div>
