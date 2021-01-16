@@ -38,7 +38,7 @@ export default function startup({ key }) {
     try {
       setLoading(true);
       const response = await axios.get(
-        `https://isdb-startup.herokuapp.com/user/startup/${id}`
+        `http://localhost:5000/user/startup/${id}`
       );
 
       console.log(response.data);
@@ -75,6 +75,89 @@ export default function startup({ key }) {
       console.log(err);
     }
   };
+
+  async function displayRazorpay() {
+    const res = await loadScript(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
+
+    if (!res) {
+      alert("Razorpay SDK failed to load. Are you online?");
+      return;
+    }
+
+    const data = await fetch("http://localhost:5000/user/order", {
+      method: "POST",
+      body: JSON.stringify({ money: 90 }),
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+    }).then((t) => t.json());
+
+    const options = {
+      key: "rzp_test_mvc34vwanVg7nS",
+      currency: data.currency,
+      amount: data.amount,
+      order_id: data.id,
+      name: "Donation",
+      description: "Thank you for nothing. Please give us some money",
+      handler: async function (response) {
+        try {
+          const res = await axios.post(
+            "https://isdb-startup.herokuapp.com/user/order",
+            {
+              money: "60",
+            }
+          );
+          console.log(res.data);
+        } catch (err) {
+          console.log(err);
+        }
+
+        try {
+          const res = await axios.post(
+            "https://isdb-startup.herokuapp.com/user/investment",
+            {
+              email: "harshshaw5@gmail.com",
+              money: "90",
+              startupID: id,
+              userID: localStorage.getItem("id"),
+              PaymentID: response.razorpay_payment_id,
+              investMoney: "90",
+              typeOfInvestment: "Investment",
+            }
+          );
+          console.log(res.data);
+        } catch (err) {
+          console.log(err);
+        }
+
+        alert(
+          `Your transaction was successful with payment Id : ${response.razorpay_payment_id}`
+        );
+      },
+      prefill: {
+        name: "Preetam Sarkar",
+        email: "sdfdsjfh2@ndsfdf.com",
+        phone_number: "9899999999",
+      },
+    };
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  }
+
+  function loadScript(src) {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  }
+
   if (loading) return <div>loading</div>;
   else
     return (
@@ -152,7 +235,10 @@ export default function startup({ key }) {
                     $58.00B
                   </span>
                   <div className='flex mt-4 md:mt-0 md:flex-auto'>
-                    <button className='flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded'>
+                    <button
+                      onClick={displayRazorpay}
+                      className='flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded'
+                    >
                       Invest on {data.title}
                     </button>
                     <button
