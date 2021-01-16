@@ -1,4 +1,4 @@
-import {} from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import Navbar from "../../components/Navbar";
 import {
@@ -45,8 +45,33 @@ export async function getServerSideProps(context) {
 export default function startup({ data }) {
   const router = useRouter();
   const { id } = router.query;
+  const [review, setReview] = useState("");
+  const [star, setStar] = useState(0);
+  const [ratingLoading, setRatingLoading] = useState(false);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const addReview = async () => {
+    try {
+      setRatingLoading(true);
+      const response = await axios.post(
+        "https://isdb-startup.herokuapp.com/user/startup/review",
+        {
+          startupid: id,
+          userid: localStorage.getItem("id"),
+          star: star,
+          review: review,
+        }
+      );
+      data.reviews.push(response.data.comment);
+      setRatingLoading(false);
+      console.log(response.data);
+    } catch (err) {
+      setRatingLoading(false);
+
+      console.log(err);
+    }
+  };
 
   return (
     <div>
@@ -145,20 +170,30 @@ export default function startup({ data }) {
           <ModalBody>
             <FormControl>
               <FormLabel>What do you think about this startup?</FormLabel>
-              <Input placeholder='Your Views' />
+              <Input
+                onChange={(e) => setReview(e.target.value)}
+                value={review}
+                placeholder='Your Views'
+              />
             </FormControl>
 
             <FormLabel className='pt-5'>
               How much you will rate this startup?
             </FormLabel>
-            <Rating />
+            <Rating initialRating={star} onChange={(e) => setStar(e)} />
           </ModalBody>
 
           <ModalFooter>
             <Button variant='ghost' mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button colorScheme='blue'>Submit Rating</Button>
+            <Button
+              isLoading={ratingLoading}
+              onClick={addReview}
+              colorScheme='blue'
+            >
+              Submit Rating
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

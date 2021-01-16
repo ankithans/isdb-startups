@@ -41,6 +41,7 @@ export default function signup() {
 
       console.log(response.data);
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("id", response.data.id);
       router.push("/");
     } catch (err) {
       addToast("Server Error!", {
