@@ -24,14 +24,14 @@ export default function create() {
     setLoading(true);
     try {
       const response = await axios.post(
-        "https://isdb-startup.herokuapp.com/user/addstartup",
+        "http://localhost:5000/user/addstartup",
         {
           userid: localStorage.getItem("id"),
           image: imageurl,
           title: title,
           founder: founder,
           description: description,
-          problemItSolves: "",
+          problemItSolves: "ed",
           workType: workType,
           location: location,
           contactmail: contactmail,
