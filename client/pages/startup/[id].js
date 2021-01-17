@@ -130,6 +130,24 @@ export default function startup({ key }) {
         } catch (err) {
           console.log(err);
         }
+        try {
+          const res = await axios.post(
+            "http://localhost:5000/user/investment",
+            {
+              email: "harshshaw5@gmail.com",
+              money: "90",
+              // startupID: id,
+              // userID: localStorage.getItem("id"),
+              // PaymentID: response.razorpay_payment_id,
+              // investMoney: "90",
+              // typeOfInvestment: "Investment",
+            }
+          );
+          console.log(res.data);
+        } catch (err) {
+          console.log(err);
+        }
+
 
         alert(
           `Your transaction was successful with payment Id : ${response.razorpay_payment_id}`
