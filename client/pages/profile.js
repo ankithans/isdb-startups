@@ -109,7 +109,7 @@ export default function profile() {
           </div>
         </section>
 
-        <div className='px-5 flex w-full mb-5 mt-10 flex-wrap'>
+        <div className='pl-20 flex w-full mb-5 mt-10 flex-wrap'>
           <h1 className='text-blue-600 sm:text-3xl text-2xl font-medium title-font lg:w-1/3 lg:mb-0 mb-4'>
             User Startups
           </h1>
