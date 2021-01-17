@@ -43,5 +43,7 @@ Internet startups Database
 - 
 
 ## made with 💕 by: 
-- [Ankit Hans](https://github.com/ankithans)
+- [Preetam Sarkar](https://github.com/Leoravoe)
 - [Aryamaan Pandey](https://github.com/Aryamaan23)
+- [Harsh Shaw](https://github.com/harshshaw)
+- [Ankit Hans](https://github.com/ankithans)
