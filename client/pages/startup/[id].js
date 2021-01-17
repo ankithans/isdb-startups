@@ -21,6 +21,7 @@ import Reviews from "../../components/ReviewCard";
 import ReviewCard from "../../components/ReviewCard";
 import Rating from "react-rating";
 import axios from "axios";
+import Footer from "../../components/Footer";
 
 export default function startup({ key }) {
   const router = useRouter();
@@ -307,6 +308,8 @@ export default function startup({ key }) {
             </div>
           </div>
         </section>
+
+        <Footer />
       </div>
     );
 }

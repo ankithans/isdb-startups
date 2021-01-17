@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../../components/Navbar";
 import Loader from "react-loader-spinner";
+import Footer from "../../components/Footer";
 
 export const SuccessPredictor = () => {
   const [company_age, UpdateCompany_age] = useState(null);
@@ -30,7 +31,7 @@ export const SuccessPredictor = () => {
     <div>
       <Navbar />
 
-      <div className='max-w-4xl mt-10 p-6 mx-auto bg-gray-50 dark:bg-gray-800 rounded-md shadow-md'>
+      <div className='max-w-4xl mt-10 mb-32 p-6 mx-auto bg-gray-50 dark:bg-gray-800 rounded-md shadow-md'>
         <h2 className='text-lg text-gray-700 dark:text-white font-semibold capitalize'>
           Predic startup success
         </h2>
@@ -149,6 +150,8 @@ export const SuccessPredictor = () => {
           </div>
         </form>
       </div>
+
+      <Footer />
     </div>
   );
 };

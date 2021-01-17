@@ -21,14 +21,14 @@ export default function Footer() {
             <span className='ml-3 text-xl'>IMDB Startups</span>
           </a>
           <p className='text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4'>
-            © 2020 imdb startups —
+            © 2020 ISDB —
             <a
-              href='https://twitter.com/knyttneve'
+              href='https://github.com/ankithans/isdb-startups'
               rel='noopener noreferrer'
               className='text-gray-600 ml-1'
               target='_blank'
             >
-              @ankithans
+              @isdb-startups
             </a>
           </p>
           <span className='inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start'>

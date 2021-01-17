@@ -28,16 +28,19 @@ export default function Navbar({ createStartup, profile }) {
             </a>
           </Link>
           <nav className='md:ml-auto flex flex-wrap items-center text-base justify-center'>
-            <Link href='/startup/SuccessPredictor'>
-              <a className='mr-5 hover:text-gray-900'>Success Predictor</a>
-            </Link>
-            <Link>
-              <a className='mr-5 hover:text-gray-900'></a>
-            </Link>
+            <button
+              onClick={() => router.push("/startup/SuccessPredictor")}
+              className='mr-5 hover:text-gray-900'
+            >
+              Success Predictor
+            </button>
 
-            <Link href='/startup/LoanPredictor'>
-              <a className='mr-5 hover:text-gray-900'>Loan Predictor</a>
-            </Link>
+            <button
+              onClick={() => router.push("/startup/LoanPredictor")}
+              className='mr-5 hover:text-gray-900'
+            >
+              Loan Predictor
+            </button>
             <button
               onClick={() => router.push("/profile")}
               className='mr-4 inline-flex items-center bg-indigo-500 text-white border-0 py-1 px-3 focus:outline-none hover:bg-indigo-400 rounded text-base mt-4 md:mt-0'
@@ -56,23 +59,27 @@ export default function Navbar({ createStartup, profile }) {
               </svg>
             </button>
           </nav>
-          <button
-            onClick={createStartup}
-            className='inline-flex items-center bg-indigo-500 text-white border-0 py-1 px-3 focus:outline-none hover:bg-indigo-400 rounded text-base mt-4 md:mt-0'
-          >
-            Create Startup
-            <svg
-              fill='none'
-              stroke='currentColor'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth='2'
-              className='w-4 h-4 ml-1'
-              viewBox='0 0 24 24'
-            >
-              <path d='M5 12h14M12 5l7 7-7 7'></path>
-            </svg>
-          </button>
+          <Link className='no-underline' href='/startup/create'>
+            <a className='no-underline'>
+              <button
+                onClick={createStartup}
+                className='inline-flex items-center bg-indigo-500 text-white border-0 py-1 px-3 focus:outline-none hover:bg-indigo-400 rounded text-base mt-4 md:mt-0'
+              >
+                Create Startup
+                <svg
+                  fill='none'
+                  stroke='currentColor'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  className='w-4 h-4 ml-1'
+                  viewBox='0 0 24 24'
+                >
+                  <path d='M5 12h14M12 5l7 7-7 7'></path>
+                </svg>
+              </button>
+            </a>
+          </Link>
         </div>
         <hr />
       </header>

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import InvestmentCard from "../components/InvestmentCard";
 import StartupCard from "../components/StartupCard";
+import Footer from "../components/Footer";
 
 export default function profile() {
   const [loading, setLoading] = useState(true);
@@ -128,6 +129,7 @@ export default function profile() {
             ))}
           </div>
         </div>
+        <Footer />
       </div>
     );
 }
