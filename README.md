@@ -6,6 +6,7 @@
 ## 🤔 Challenges we faced
 - Creating success predictor and loan predictor models.
 - Using razorpay api in our application.
+- Deciding which model is best for classification as per our need.
 
 ## 💡 features
 - View the history, reviews and growth of the startups on the go.
