@@ -31,7 +31,10 @@ export default function Navbar({ createStartup, profile }) {
             <Link href='/startup/SuccessPredictor'>
               <a className='mr-5 hover:text-gray-900'>Success Predictor</a>
             </Link>
-            <a className='mr-5 hover:text-gray-900'></a>
+            <Link>
+              <a className='mr-5 hover:text-gray-900'></a>
+            </Link>
+
             <Link href='/startup/LoanPredictor'>
               <a className='mr-5 hover:text-gray-900'>Loan Predictor</a>
             </Link>
