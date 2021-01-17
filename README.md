@@ -1,7 +1,7 @@
 # Internet startups Database
 
 ## ❓ Problem Statement
-> 
+>
 
 ## 🤔 Challenges we faced
 - Creating success predictor and loan predictor models.
@@ -12,6 +12,7 @@
 - Create your own startup.
 - Predict success and failiure of an startup using ml.
 - Predict if the startup can get a loan using ml.
+- Predict how much profit startup will make using ml.
 - Add reviews to a startup and get reviews sentiments using ml.
 - Invest on the startups using razorpay apis.
 - Get rewared by investing on a startup.
