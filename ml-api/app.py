@@ -85,7 +85,7 @@ def predict():
             pred_args=[NewYork,California,Florida,RnDSpend,AdminSpend,MarketSpend]
             pred_args_arr=np.array(pred_args)
             pred_args_arr=pred_args_arr.reshape(1,-1)
-            mul_reg=open("ML\ML/multiple_linear_model.pkl","rb")
+            mul_reg=open("multiple_linear_model.pkl","rb")
             ml_model=joblib.load(mul_reg)
             model_prediction=ml_model.predict(pred_args_arr)
             model_prediction=round(float(model_prediction),2)
