@@ -28,9 +28,12 @@ Internet startups Database
 ## 👣 steps to run the project
 - clone the repo in your local machine
 - do ```yarn``` in root directory
-- do ```flutter pub get``` in ```client/helpMe```
-- add MONGO_URI in your .env
+- do ```yarn``` in ```client```
+- add DB_URI, EMAIL_USER, EMAIL_PASSWORD in your .env
 - do ```yarn dev``` in the root directory and your backend is up and running
+- dp ```yarn dev``` in client directory and web application will be up and runnning
+- install python packages mentioned in requirements
+- do ```cd ml-api``` and run ```python app.py``` and flask api will be up and running
 
 ## Tech Stacks & dependencies
 ##### 🤖 Backend
@@ -38,9 +41,13 @@ Internet startups Database
 - mongodb
 - Heroku
 - Flask
+- razorpay
+- nodemailer
 
 ##### 🌟 Frontend
-- 
+- nextjs
+- chakra UI
+- tailwind CSS
 
 ## made with 💕 by: 
 - [Preetam Sarkar](https://github.com/Leoravoe)
