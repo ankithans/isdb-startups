@@ -1,12 +1,11 @@
-# isdb-startups
-Internet startups Database
+# Internet startups Database
 
 ## ❓ Problem Statement
 > 
 
 ## 🤔 Challenges we faced
-- 
-- 
+- Creating success predictor and loan predictor models.
+- Using razorpay api in our application.
 
 ## 💡 features
 - View the history, reviews and growth of the startups on the go.
