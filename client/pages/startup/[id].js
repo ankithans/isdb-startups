@@ -69,16 +69,6 @@ export default function startup({ key }) {
     }
   };
 
-  // const reviewsPredict = () => {
-  //   data.reviews.map((reviews) => console.log(reviews.review));
-  //   for (var i = 0; i < data.reviews; i++) {
-  //     const formdata = new FormData();
-
-  //     console.log(data.reviews[i].review);
-  //     formdata.append("text", data.reviews[i].review);
-  //   }
-  // };
-
   useEffect(() => {
     getStartupById();
   }, []);
@@ -175,7 +165,6 @@ export default function startup({ key }) {
         } catch (err) {
           console.log(err);
         }
-
 
         alert(
           `Your transaction was successful with payment Id : ${response.razorpay_payment_id}`
@@ -344,10 +333,10 @@ export default function startup({ key }) {
             </h1>
             <div className='text-center pb-10'>
               <p className='text-red-500 font-bold'>
-                Negative reviews - {npercentage}%
+                Negative reviews - {npercentage.toFixed(2)}%
               </p>
               <p className='text-green-500 font-bold'>
-                Positive reviews - {ppercentage}%
+                Positive reviews - {ppercentage.toFixed(2)}%
               </p>
             </div>
             <div className='flex flex-wrap -m-4'>
