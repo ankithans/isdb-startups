@@ -28,8 +28,13 @@ export default function Navbar({ createStartup, profile }) {
             </a>
           </Link>
           <nav className='md:ml-auto flex flex-wrap items-center text-base justify-center'>
-            <a className='mr-5 hover:text-gray-900'>First Link</a>
-            <a className='mr-5 hover:text-gray-900'>Second Link</a>
+            <Link href='/startup/SuccessPredictor'>
+              <a className='mr-5 hover:text-gray-900'>Success Predictor</a>
+            </Link>
+            <a className='mr-5 hover:text-gray-900'></a>
+            <Link href='/startup/LoanPredictor'>
+              <a className='mr-5 hover:text-gray-900'>Loan Predictor</a>
+            </Link>
             <button
               onClick={() => router.push("/profile")}
               className='mr-4 inline-flex items-center bg-indigo-500 text-white border-0 py-1 px-3 focus:outline-none hover:bg-indigo-400 rounded text-base mt-4 md:mt-0'
