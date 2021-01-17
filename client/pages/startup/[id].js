@@ -86,7 +86,7 @@ export default function startup({ key }) {
       return;
     }
 
-    const data = await fetch("http://localhost:5000/user/order", {
+    const data = await fetch("https://isdb-startup.herokuapp.com/user/order", {
       method: "POST",
       body: JSON.stringify({ money: 90 }),
       headers: { "Content-type": "application/json; charset=UTF-8" },
