@@ -69,7 +69,7 @@ def home():
         else:
            new='Your loan application is not selected'
 
-    return {"Loan Prediction":new}
+    return {"Prediction":new}
 
 @app.route('/profit',methods=['GET','POST'])
 
