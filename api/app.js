@@ -27,6 +27,7 @@ app.listen(PORT, () => {
 // routes
 
 app.get('/', (req, res) => {
+    console.log("Hello")
     res.send("hello")
 })
 app.get('/startup', async (req,res) => {
