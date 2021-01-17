@@ -10,7 +10,7 @@ export const SuccessPredictor = () => {
   const [founder_age, UpdateFounder_age] = useState(null);
   const [founder_school, UpdateFounder_school] = useState(null);
   const [funding, updateFunding] = useState(null);
-  const [response, updateResponse] = useState(null);
+  const [result, updateResult] = useState(null);
   const [loading, isLoading] = useState(false);
 
   const submit = async (e) => {
@@ -23,7 +23,7 @@ export const SuccessPredictor = () => {
     formdata.append("funding", funding);
     await axios
       .post("http://127.0.0.1:5000/success", formdata)
-      .then((res) => updateResponse(res.data.predict))
+      .then((res) => updateResult(res.data.predict))
       .catch((err) => console.log(err));
   };
 
@@ -140,13 +140,23 @@ export const SuccessPredictor = () => {
                 timeout={3000}
               />
             ) : (
-              <button
-                type='submit'
-                className='bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600'
-              >
-                Predict
-              </button>
-            )}
+                <button
+                  type='submit'
+                  className='bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600'
+                >
+                  Predict
+                </button>
+              )}
+          </div>
+          <div className='text-center pb-10'>
+            {result == 1 ?
+              <p className='text-green-500 font-bold'>
+                May succeed  -
+              </p> :
+              <p className='text-red-500 font-bold'>
+                Try to Increase Funding  -
+              </p>
+            }
           </div>
         </form>
       </div>
