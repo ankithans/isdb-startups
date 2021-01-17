@@ -31,6 +31,8 @@ export default function startup({ key }) {
   const [star, setStar] = useState(0);
   const [ratingLoading, setRatingLoading] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [npercentage, setnPercentage] = useState(null);
+  const [ppercentage, setpPercentage] = useState(null);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -44,12 +46,38 @@ export default function startup({ key }) {
 
       console.log(response.data);
       setData(response.data);
+
+      const formdata = new FormData();
+      for (var i = 0; i < response.data.reviews.length; i++) {
+        console.log(response.data.reviews[i].review);
+        formdata.append("text", response.data.reviews[i].review);
+      }
+
+      await axios
+        .post("http://127.0.0.1:5000/review", formdata)
+        .then((res) => {
+          console.log(res);
+          setnPercentage(res.data.negatie_percentage);
+          setpPercentage(res.data.positive_percentage);
+        })
+        .catch((err) => console.log(err));
+
       setLoading(false);
     } catch (err) {
       setLoading(false);
       console.log(err);
     }
   };
+
+  // const reviewsPredict = () => {
+  //   data.reviews.map((reviews) => console.log(reviews.review));
+  //   for (var i = 0; i < data.reviews; i++) {
+  //     const formdata = new FormData();
+
+  //     console.log(data.reviews[i].review);
+  //     formdata.append("text", data.reviews[i].review);
+  //   }
+  // };
 
   useEffect(() => {
     getStartupById();
@@ -291,11 +319,19 @@ export default function startup({ key }) {
           </ModalContent>
         </Modal>
 
-        <section className='text-gray-600 body-font'>
-          <div className='container px-5 py-24 mx-auto'>
+        <section className='text-gray-600 body-font mb-32'>
+          <div className='container px-5 pt-24 mx-auto'>
             <h1 className='text-3xl font-medium title-font text-gray-900 mb-12 text-center'>
               Reviews
             </h1>
+            <div className='text-center pb-10'>
+              <p className='text-red-500 font-bold'>
+                Negative reviews - {npercentage}%
+              </p>
+              <p className='text-green-500 font-bold'>
+                Positive reviews - {ppercentage}%
+              </p>
+            </div>
             <div className='flex flex-wrap -m-4'>
               {data.reviews.map((reviews) => (
                 <ReviewCard
