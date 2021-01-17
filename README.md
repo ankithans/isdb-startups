@@ -32,6 +32,7 @@ Internet startups Database
 - nodejs
 - mongodb
 - Heroku
+- Flask
 
 ##### 🌟 Frontend
 - 
