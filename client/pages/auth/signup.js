@@ -42,7 +42,7 @@ export default function signup() {
       console.log(response.data);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("id", response.data.id);
-      router.push("/");
+      router.push("/home/dashboard");
     } catch (err) {
       addToast("Server Error!", {
         appearance: "error",
