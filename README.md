@@ -38,3 +38,4 @@ Internet startups Database
 
 ## made with 💕 by: 
 - [Ankit Hans](https://github.com/ankithans)
+- [Aryamaan Pandey](https://github.com/Aryamaan23)
