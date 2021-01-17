@@ -31,8 +31,8 @@ export default function startup({ key }) {
   const [star, setStar] = useState(0);
   const [ratingLoading, setRatingLoading] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [npercentage, setnPercentage] = useState(null);
-  const [ppercentage, setpPercentage] = useState(null);
+  const [npercentage, setnPercentage] = useState(0);
+  const [ppercentage, setpPercentage] = useState(0);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 

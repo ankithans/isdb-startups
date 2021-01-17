@@ -18,7 +18,7 @@ export default function Footer() {
             >
               <path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'></path>
             </svg>
-            <span className='ml-3 text-xl'>IMDB Startups</span>
+            <span className='ml-3 text-xl'>ISDB Startups</span>
           </a>
           <p className='text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4'>
             © 2020 ISDB —

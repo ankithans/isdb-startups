@@ -46,7 +46,7 @@ export const ProfitPredictor = () => {
                 className='text-gray-700 dark:text-gray-200'
                 htmlFor='username'
               >
-                company age
+                Enter 1 if NewYork or 0
               </label>
               <input
                 required
@@ -64,7 +64,7 @@ export const ProfitPredictor = () => {
                 className='text-gray-700 dark:text-gray-200'
                 htmlFor='founder'
               >
-                founder Exp
+                Enter 1 or 0 for California
               </label>
               <input
                 required
@@ -82,7 +82,7 @@ export const ProfitPredictor = () => {
                 className='text-gray-700 dark:text-gray-200'
                 htmlFor='imageurl'
               >
-                founder age
+                Enter 1 or 0 for Florida
               </label>
               <input
                 required
@@ -100,7 +100,7 @@ export const ProfitPredictor = () => {
                 className='text-gray-700 dark:text-gray-200'
                 htmlFor='description'
               >
-                founder school
+                RnDSpend funding
               </label>
               <input
                 required
@@ -118,7 +118,7 @@ export const ProfitPredictor = () => {
                 className='text-gray-700 dark:text-gray-200'
                 htmlFor='workType'
               >
-                funding
+                Enter AdminSpend Amount
               </label>
               <input
                 required
@@ -135,7 +135,7 @@ export const ProfitPredictor = () => {
                 className='text-gray-700 dark:text-gray-200'
                 htmlFor='workType'
               >
-                funding
+                Enter MarketSpend Amount
               </label>
               <input
                 required
