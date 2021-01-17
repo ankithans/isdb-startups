@@ -9,8 +9,13 @@ Internet startups Database
 - 
 
 ## 💡 features
-- 
-- 
+- View the history, reviews and growth of the startups on the go.
+- Create your own startup.
+- Predict success and failiure of an startup using ml.
+- Predict if the startup can get a loan using ml.
+- Add reviews to a startup and get reviews sentiments using ml.
+- Invest on the startups using razorpay apis.
+- Get rewared by investing on a startup.
 
 
 ## 💻 samples:
