@@ -29,6 +29,7 @@
 <img src="https://github.com/ankithans/isdb-startups/blob/main/mockups/loan-predictor.jpg">
 <img src = "https://github.com/ankithans/isdb-startups/blob/main/mockups/success-predictor.jpg">
 <img src="https://github.com/ankithans/isdb-startups/blob/main/mockups/profile-1.jpg">
+<img src="https://github.com/ankithans/isdb-startups/blob/main/mockups/profile-2.jpg">
 <img src="https://github.com/ankithans/isdb-startups/blob/main/mockups/sign-up.jpg">
 
 
